@@ -71,13 +71,8 @@ func encrypt(key, plaintext []byte) ([]byte, error) {
 
 	originalPlaintextLength := len(plaintext)
 
-	var emptyByte byte
-
-	for i:=0;i<seaturtle.BlockSize;i++ {
-		plaintext = append(plaintext, emptyByte)
-	}
-
-	//ciphertext := make([]byte, seaturtle.BlockSize+len(plaintext))
+	emptyBytes := make([]byte, seaturtle.BlockSize)
+	plaintext = append(plaintext, emptyBytes...)
 
 	iv := plaintext[originalPlaintextLength:]
 	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
