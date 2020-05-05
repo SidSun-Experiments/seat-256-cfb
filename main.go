@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sid-sun/sealion"
+	"github.com/sid-sun/seaturtle"
 	"golang.org/x/crypto/sha3"
 )
 
@@ -51,8 +51,8 @@ func main() {
 		// Read contents of passphrase file and pass it through SHA-256
 		key := sha3.Sum256(readFromFile(os.Args[3]))
 
-		// Create the sealion cipher from the hash of passphrase
-		blockCipher, err = sealion.NewCipher(key[:])
+		// Create the seaturtle cipher from the hash of passphrase
+		blockCipher, err = seaturtle.NewCipher(key[:])
 		if err != nil {
 			panic(err.Error())
 		}
@@ -96,10 +96,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	// If the ouput file was not specified append .seal to the input file
+	// If the ouput file was not specified append .seat to the input file
 	// And use it as output file path
 	if outputPath == "" {
-		outputPath = os.Args[2] + ".seal"
+		outputPath = os.Args[2] + ".seat"
 	}
 
 	// Start the encrypt / decrypt and output writer routines

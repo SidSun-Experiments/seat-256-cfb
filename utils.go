@@ -169,10 +169,10 @@ func readFromFile(filePath string) []byte {
 
 func printHelp() {
 	// Ah, yes; help.
-	fmt.Printf("%s is a CLI program which implements the SeaLion Block Cipher (http://github.com/sid-sun/sealion) in CFB (cipher feedback) mode with 256-Bit key length, using SHA3-256.", os.Args[0])
+	fmt.Printf("%s is a CLI program which implements the SeaTurtle Block Cipher (http://github.com/sid-sun/seaturtle) in CFB (cipher feedback) mode with 256-Bit key length, using SHA3-256.", os.Args[0])
 	fmt.Printf("\nDeveloped by Sidharth Soni (Sid Sun) <sid@sidsun.com>")
 	fmt.Printf("\nOpen-sourced under The Unlicense")
-	fmt.Printf("\nSource Code: http://github.com/sid-sun/seal-256-cfb\n")
+	fmt.Printf("\nSource Code: http://github.com/sid-sun/seat-256-cfb\n")
 	fmt.Printf("\nUsage:\n")
 	fmt.Printf("    To encrypt: %s (--encrypt / -e) <input file> <passphrase file> <output file (optional)>\n", os.Args[0])
 	fmt.Printf("    To decrypt: %s (--decrypt / -d) <encrypted input> <passphrase file> <output file (optional)>\n", os.Args[0])

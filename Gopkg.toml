@@ -31,7 +31,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/sid-sun/sealion"
+  name = "github.com/sid-sun/seaturtle"
 
 [[constraint]]
   branch = "master"

@@ -22,12 +22,12 @@ jobs:
           mkdir -p /home/runner/go/bin
           mkdir /home/runner/go/src
           cd /home/runner/go/src
-          git clone https://github.com/sid-sun/seal-256-cfb.git
-          cd /home/runner/go/src/seal-256-cfb
+          git clone https://github.com/sid-sun/seat-256-cfb.git
+          cd /home/runner/go/src/seat-256-cfb
 
       - name: Install dependencies
         run: |
-          cd /home/runner/go/src/seal-256-cfb
+          cd /home/runner/go/src/seat-256-cfb
           go get -v -t -d ./...
           if [ -f Gopkg.toml ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
@@ -36,12 +36,12 @@ jobs:
 
       - name: Build binary
         run: |
-          cd /home/runner/go/src/seal-256-cfb
-          env GOOS=linux GOARCH=amd64 go build -v -o seal-256-cfb_linux-amd64
-          env GOOS=darwin GOARCH=amd64 go build -v -o seal-256-cfb_darwin-amd64
-          env GOOS=windows GOARCH=amd64 go build -v -o seal-256-cfb_windows-amd64.exe
-          mkdir -p /home/runner/work/seal-256-cfb/seal-256-cfb/binaries
-          cp seal-256-cfb_* /home/runner/work/seal-256-cfb/seal-256-cfb/binaries
+          cd /home/runner/go/src/seat-256-cfb
+          env GOOS=linux GOARCH=amd64 go build -v -o seat-256-cfb_linux-amd64
+          env GOOS=darwin GOARCH=amd64 go build -v -o seat-256-cfb_darwin-amd64
+          env GOOS=windows GOARCH=amd64 go build -v -o seat-256-cfb_windows-amd64.exe
+          mkdir -p /home/runner/work/seat-256-cfb/seat-256-cfb/binaries
+          cp seat-256-cfb_* /home/runner/work/seat-256-cfb/seat-256-cfb/binaries
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
@@ -62,9 +62,9 @@ jobs:
       - name: Read version and folder
         shell: bash
         run: |
-          chmod +x built-binaries/seal-256-cfb_linux-amd64
-          export version=`built-binaries/seal-256-cfb_linux-amd64 -v`
-          export folder=`echo seal-256-cfb_amd64`
+          chmod +x built-binaries/seat-256-cfb_linux-amd64
+          export version=`built-binaries/seat-256-cfb_linux-amd64 -v`
+          export folder=`echo seat-256-cfb_amd64`
           echo "export version=\"$version\"" > env.file
           echo "export folder=\"$folder\"" >> env.file
 
@@ -79,18 +79,18 @@ jobs:
         shell: bash
         run: |
           source ./env.file
-          echo "Package: seal-256-cfb" > $folder/DEBIAN/control
+          echo "Package: seat-256-cfb" > $folder/DEBIAN/control
           echo "Version: "$version >> $folder/DEBIAN/control
           echo "Maintainer: Sid Sun <sid@sidsun.com>" >> $folder/DEBIAN/control
-          echo "Description: A CLI program which implements the SeaLion Block Cipher." >> $folder/DEBIAN/control
-          echo "Homepage: https://github.com/sid-sun/seal-256-cfb" >> $folder/DEBIAN/control
+          echo "Description: A CLI program which implements the SeaTurtle Block Cipher." >> $folder/DEBIAN/control
+          echo "Homepage: https://github.com/sid-sun/seat-256-cfb" >> $folder/DEBIAN/control
           echo "Architecture: amd64" >> $folder/DEBIAN/control
 
       - name: Copy binary to build folder
         shell: bash
         run: |
           source ./env.file
-          cp built-binaries/seal-256-cfb_linux-amd64 $folder/usr/bin/.
+          cp built-binaries/seat-256-cfb_linux-amd64 $folder/usr/bin/seat-256-cfb
 
       - name: Build debian package
         shell: bash
@@ -103,7 +103,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: debian-package
-          path: seal-256-cfb_amd64.deb
+          path: seat-256-cfb_amd64.deb
 
   deploy:
     name: Deploy
@@ -121,8 +121,8 @@ jobs:
       - name: Install package and read version number
         shell: bash
         run: |
-          sudo dpkg -i debian-package/seal-256-cfb_amd64.deb
-          export version=`seal-256-cfb -v`
+          sudo dpkg -i debian-package/seat-256-cfb_amd64.deb
+          export version=`seat-256-cfb -v`
           echo "export version=\"$version\"" > env.file
 
       - name: Get assets and decrypt data
@@ -157,7 +157,7 @@ jobs:
         shell: bash
         run: |
           source ./env.file
-          cp debian-package/seal-256-cfb_amd64.deb yappa/seal-256-cfb_"$version"_amd64.deb
+          cp debian-package/seat-256-cfb_amd64.deb yappa/seat-256-cfb_"$version"_amd64.deb
 
       - name: Update release and package files
         shell: bash
@@ -174,7 +174,7 @@ jobs:
         run: |
            cd yappa
            git add -A
-           git commit -s -S -m "update seal-256-cfb"
+           git commit -s -S -m "update seat-256-cfb"
 
       - name: Download built binary
         uses: actions/download-artifact@v1
@@ -188,7 +188,7 @@ jobs:
           USER: ${{ secrets.HOSTING_USER}}
           HOST: ${{ secrets.HOST }}
         run: |
-           ./github-actions-assets/seal-push-to-hosting.sh
+           ./github-actions-assets/seat-push-to-hosting.sh
 
       - name: Push to deployment
         shell: bash

@@ -19,11 +19,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4ef1bd2aee07ac6b61f9d564dbfbf4c0dd5d143c9c69a7b0a1f0d11b3c984c7d"
-  name = "github.com/sid-sun/sealion"
+  digest = "1:bec1ebea9b62abb99c699128bdce21f804c850883152c68c1b95907550f97c49"
+  name = "github.com/sid-sun/seaturtle"
   packages = ["."]
   pruneopts = "UT"
-  revision = "815da294ff233788068b5e3944a498faa70070cc"
+  revision = "47571482b459d8b6c7062bc98d277da77eadfd20"
 
 [[projects]]
   branch = "master"
@@ -50,7 +50,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/cheggaaa/pb",
-    "github.com/sid-sun/sealion",
+    "github.com/sid-sun/seaturtle",
     "golang.org/x/crypto/sha3",
   ]
   solver-name = "gps-cdcl"

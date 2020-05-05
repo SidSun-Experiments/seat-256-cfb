@@ -1,33 +1,33 @@
-## seal-256-cfb
+## seat-256-cfb
 
-### seal-256-cfb is a CLI program which implements the [SeaLion Block Cipher](https://github.com/sid-sun/sealion) in CFB (cipher feedback) mode with 256-Bit length keys using SHA3-256 with files.
+### seat-256-cfb is a CLI program which implements the [SeaTurtle Block Cipher](https://github.com/sid-sun/seaturtle) in CFB (cipher feedback) mode with 256-Bit length keys using SHA3-256 with files.
 
 ## Usage:
 
 ```
-To encrypt: seal-256-cfb (--encrypt / -e) <input file> <passphrase file> <output file (optional)>
+To encrypt: seat-256-cfb (--encrypt / -e) <input file> <passphrase file> <output file (optional)>
 
-To decrypt: seal-256-cfb (--decrypt / -d) <encrypted input> <passphrase file> <output file (optional)>
+To decrypt: seat-256-cfb (--decrypt / -d) <encrypted input> <passphrase file> <output file (optional)>
 
-To get version number: seal-256-cfb (--version / -v)
+To get version number: seat-256-cfb (--version / -v)
 
-To get help: seal-256-cfb (--help / -h)
+To get help: seat-256-cfb (--help / -h)
 ```
 
 ## Installation:
 
 ### Compiled Binaries: 
 
-> [Linux amd64](https://cdn.sidsun.com/seal-256-cfb/seal-256-cfb_linux-amd64)
+> [Linux amd64](https://cdn.sidsun.com/seat-256-cfb/seat-256-cfb_linux-amd64)
 
-> [Darwin amd64](https://cdn.sidsun.com/seal-256-cfb/seal-256-cfb_darwin-amd64)
+> [Darwin amd64](https://cdn.sidsun.com/seat-256-cfb/seat-256-cfb_darwin-amd64)
 
-> [Windows amd64](https://cdn.sidsun.com/seal-256-cfb/seal-256-cfb_windows-amd64.exe)
+> [Windows amd64](https://cdn.sidsun.com/seat-256-cfb/seat-256-cfb_windows-amd64.exe)
 
 
 ### Debian Packages:
 
-> [amd64](https://cdn.sidsun.com/seal-256-cfb/seal-256-cfb_amd64.deb)
+> [amd64](https://cdn.sidsun.com/seat-256-cfb/seat-256-cfb_amd64.deb)
 
 
 ### Use YAPPA (Yet Another PPA) :
@@ -36,7 +36,7 @@ To get help: seal-256-cfb (--help / -h)
 curl -s --compressed "https://sid-sun.github.io/yappa/KEY.gpg" | sudo apt-key add -
 curl -s --compressed "https://sid-sun.github.io/yappa/yappa.list" | sudo tee /etc/apt/sources.list.d/yappa.list
 sudo apt update
-sudo apt install seal-256-cfb
+sudo apt install seat-256-cfb
 ```
 
 ## Versioning system:
